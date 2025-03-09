@@ -13,18 +13,17 @@ const router = express.Router();
 router.post("/", async (req, res) => {
     try {
         const { email, password } = req.body;
-        const result = new User.findOne({ email });
+        const result = await User.findOne({ email });
+        console.log(result);
         if (result?._id) {
             if (result?.password == password) {
-                res.status(200).json({ message: "User Created successfully", data:result });
+                res.status(200).json({ message: "User accessed successfully", data:result });
             } else {
                 res.status(401).json({ message: "Unautherized , wrong password" });
             }
         } else {
             res.status(404).json({ message: "user didnt exist" });
         }
-        await result.save();
-        res.status(201).json({ message: "User Created successfully", result });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

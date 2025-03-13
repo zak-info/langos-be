@@ -62,6 +62,11 @@ router.get("/",async (req,res)=>{
 
 })
 
+router.get("/:_id",async (req,res)=>{
+    const exams = await Exam.find({idUser:req.params._id});
+    res.status(200).json({data:exams})
+})
+
 
 
 

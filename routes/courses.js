@@ -59,7 +59,11 @@ router.post("/", upload.single("file"), async (req, res) => {
 router.get("/",async (req,res)=>{
     const courses = await Course.find();
     res.status(200).json({data:courses})
+})
 
+router.get("/:_id",async (req,res)=>{
+    const courses = await Course.find({idUser:req.params._id});
+    res.status(200).json({data:courses})
 })
 
 

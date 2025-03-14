@@ -24,6 +24,8 @@ const courseRoutes = require("./routes/courses");
 const examRoutes = require("./routes/exams");
 const userRoutes = require("./routes/users");
 const loginRoutes = require("./routes/login");
+const quizRoutes = require("./routes/quiz");
+const questionRoutes = require("./routes/question");
 
 
 
@@ -33,6 +35,8 @@ app.use("/courses", courseRoutes);
 app.use("/exam", examRoutes);
 app.use("/users", userRoutes);
 app.use("/login", loginRoutes);
+app.use("/quiz", quizRoutes);
+app.use("/quiz/question", questionRoutes);
 
 
 
@@ -42,6 +46,8 @@ app.use("/public", express.static("public"));
 app.get("/", (req, res) => {
     res.json({ msg: "hi there " })
 })
+
+
 
 
 
